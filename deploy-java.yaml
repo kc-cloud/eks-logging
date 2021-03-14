@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  selector:
+    matchLabels:
+      app: web-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: 452706865406.dkr.ecr.us-east-1.amazonaws.com/eks-test:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: applog
+          mountPath: /var/log
+      volumes:
+      - name: applog
+        hostPath:
+          path: /var/log
