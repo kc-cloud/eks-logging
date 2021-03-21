@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kcluster-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: / 
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /one
+        backend:
+          serviceName: flask-web1
+          servicePort: 80
+  - http:
+      paths:
+      - path: /two
+        backend:
+          serviceName: flask-web1
+          servicePort: 80

@@ -1,0 +1,4 @@
+image:
+  repository: bitnami/nginx
+  tag: 1.18.0
+
